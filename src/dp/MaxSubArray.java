@@ -1,5 +1,7 @@
 package dp;
 
+import javax.swing.text.html.MinimalHTMLWriter;
+
 public class MaxSubArray {
 	public static int max(int i, int j){
 		return i > j ? i : j;
@@ -14,6 +16,18 @@ public class MaxSubArray {
 			System.out.println(all);
 		}
 		return all;
+	}
+	
+	public static int maxSumSimple(int[] a){
+		int sum = a[a.length - 1],max = a[a.length - 1];
+		for(int i = a.length - 2; i >= 0; i--){
+			if(sum < 0)
+				sum = 0;
+			sum += a[i];
+			if(sum > max)
+				max = sum;
+		}
+		return max;
 	}
 	
 	//可以找到始末下标
@@ -60,6 +74,7 @@ public class MaxSubArray {
 	}
 	public static void main(String[] args) {
 		int[] a = {-12, -8, -5, 66, -21, 0 ,35,-44,-7};
+		System.out.println(maxSumSimple(a));
 		maxSum1(a);
 	}
 }

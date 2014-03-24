@@ -5,6 +5,5 @@ public class Node<T> {
 	public Node<T> next;
 	Node(T t){
 		this.t = t;
-		next = null;
 	}
 }
