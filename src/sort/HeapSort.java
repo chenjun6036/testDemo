@@ -1,47 +1,47 @@
 package sort;
-
+/**
+ * ∂—≈≈–Ú
+ * @author chenjun
+ *
+ */
 public class HeapSort{
 	private static int heapSize;
-	private static int[] A;
-	
-	public static void maxHeapity(int[] A, int i) {
-		int left = 2 * i + 1;
-		int right = 2 * i + 2;
-		int max = i;
-		if (left <= heapSize - 1 && A[left] > A[max]){
+	private static <T> void swap(T[] array, int i, int j){
+		T tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+	}
+	public static <T extends Comparable<T>> void maxHeapity(T[] array, int root){
+		int left = root * 2 + 1, right = root * 2 + 2;
+		int max = root;
+		if(left < heapSize && array[max].compareTo(array[left]) < 0)
 			max = left;
-		}
-		if (right <= heapSize - 1 && A[right] > A[max]){
+		if(right < heapSize && array[max].compareTo(array[right]) < 0)
 			max = right;
-		}
-		if (max !=i){
-			int temp = A[i];
-			A[i] = A[max];
-			A[max] = temp;
-			maxHeapity(A, max);
-		}		
+		if(max != root){
+			swap(array,max,root);
+			maxHeapity(array, max);
+		}			
 	}
 	
-	public static void buildHeap(int[] A) {
-		for (int i = A.length / 2 - 1; i >= 0; i--){
-			maxHeapity(A, i);
+	public static <T extends Comparable<T>> void buildHeap(T[] array){
+		for(int i = array.length/2; i >= 0; i--){
+			maxHeapity(array, i);
 		}
 	}
 	
-	public static void heapSort(int[] A){
-		buildHeap(A);
-		int temp;
-		for (int i = A.length - 1; i > 0; i--){
-			temp = A[0];
-			A[0] = A[heapSize - 1];
-			A[heapSize - 1] = temp;
-			heapSize--;
-			maxHeapity(A, 0);
+	public static <T extends Comparable<T>> void heapSort(T[] array){
+		if(array == null)
+			return;
+		buildHeap(array);
+		while(heapSize > 0){
+			swap(array,0,--heapSize);
+			maxHeapity(array, 0);
 		}
 	}
 	
 	public static void main(String[] args) {
-		A = new int[]{2,1,3};
+		Integer[] A = {2,1,3};
 		heapSize = A.length;
 		heapSort(A);
 		for(int i : A){

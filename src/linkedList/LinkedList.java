@@ -1,6 +1,16 @@
 package linkedList;
 
+/**
+ * 链表及操作
+ * @author chenjun
+ *
+ */
 public class LinkedList{
+	/**
+	 * 链表反转
+	 * @param head
+	 * @return
+	 */
 	public static <T> Node<T> reverseLinkedList(Node<T> head){
 		if(head == null)
 			return head;
@@ -18,6 +28,11 @@ public class LinkedList{
 		return p1;		
 	}
 	
+	/**
+	 * 创建链表
+	 * @param array
+	 * @return
+	 */
 	public  static <T> Node<T> createLinkedList(T[] array){
 		if(array == null)
 			return null;
@@ -33,6 +48,10 @@ public class LinkedList{
 		return head;
 	}
 	
+	/**
+	 * 输出链表
+	 * @param head
+	 */
 	public static <T> void printNodes(Node<T> head){
 		if(head == null){
 			System.out.println("无元素");

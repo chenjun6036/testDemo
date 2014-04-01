@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 /**
- * 模拟栈，能够去除最小元素，时间复杂度均为O(1)，微软100题第二题。
+ * 模拟栈，能够取出最小元素，时间复杂度均为O(1)，微软100题第二题。
  * @author chenjun
  *
  * @param <T>
@@ -58,23 +58,11 @@ public class Stack<T extends Comparable<T>> {
 		System.out.println();
 	}
 	public static void main(String[] args){
-		Stack<Integer> s = new Stack<>();
-		s.push(2);
-		s.push(4);
-		s.push(8);
-		s.push(1);
-		s.push(-3);
-		s.push(13);	
-		s.printStack();
-		s.printMins();
-		s.pop();
-		s.printStack();
-		s.printMins();
-		s.pop();
-		s.printStack();
-		s.printMins();
-		s.pop();
-		s.printStack();
-		s.printMins();
+		LinkedList<Integer> ll = new LinkedList<>();
+		ll.add(1);
+		ll.addLast(2);
+		for (Integer integer : ll) {
+			System.out.println(integer);
+		}
 	}
 }

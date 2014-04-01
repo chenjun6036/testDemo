@@ -7,4 +7,20 @@ public class Node<T> {
 	Node(T t){
 		this.t = t;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(this.t.equals(((Node<T>)obj).t))
+			return true;
+		return false;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return t.toString();
+	}
 }

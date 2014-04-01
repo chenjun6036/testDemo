@@ -1,8 +1,19 @@
 package tree;
-
+/**
+ * 二叉树的基本操作
+ * @author chenjun
+ *
+ * @param <T>
+ */
 public class Tree<T> {
 	public static int i=0 ; 
 	public static int maxlen = 0;
+	
+	/**
+	 * 创建二叉树
+	 * @param array
+	 * @return
+	 */
 	public static <T> Node<T> createTree(T[] array){
 		if(array == null || i >= array.length  || array[i] == null){
 			i++;
@@ -14,15 +25,34 @@ public class Tree<T> {
 		return root;
 	}
 	
-	public static <T> void printTree(Node<T> root){
+	/**
+	 * 先序遍历打印
+	 * @param root
+	 */
+	public static <T> void printTreePreOrder(Node<T> root){
 		if(root == null)
 			return;
-		System.out.println(root.t);
-		printTree(root.left);
-		printTree(root.right);
+		System.out.print(root.t + "  ");
+		printTreePreOrder(root.left);
+		printTreePreOrder(root.right);
 	}
 	
-	//树中的最长距离
+	/**
+	 * 中序遍历打印
+	 * @param root
+	 */
+	public static <T> void printTreeInOrder(Node<T> root){
+		if(root == null)
+			return;
+		printTreeInOrder(root.left);
+		System.out.print(root.t + "  ");
+		printTreeInOrder(root.right);
+	}
+	
+	/**
+	 * 计算树中的最长距离
+	 * @param root
+	 */
 	public static <T> void maxLen(Node<T> root){
 		if(root == null)
 			return;
@@ -55,7 +85,11 @@ public class Tree<T> {
 		
 	}
 	
-	//将二叉搜索树变为双向链表
+	/**
+	 * 将二叉搜索树变为双向链表
+	 * @param root
+	 * @return
+	 */
 	public static <T> Result<T> treeToLinkedList(Node<T> root){
 		Result<T> result = new Result<>();
 		if(root == null)
@@ -86,13 +120,9 @@ public class Tree<T> {
 	public static void main(String[] args) {
 		Integer[] array = {1,2,4,null,null,5,null,null,3,6,null,null,7};
 		Node<Integer> root = createTree(array);
-		printTree(root);
-		Result<Integer> result = treeToLinkedList(root);
-		Node<Integer> p = result.lt;
-		while(p != null){
-			System.out.print(p.t);
-			p = p.right;
-		}
+		printTreePreOrder(root);
+		System.out.println();
+		printTreeInOrder(root);
 	}
 }
 

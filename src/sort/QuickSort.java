@@ -1,39 +1,46 @@
 package sort;
-
+/**
+ * ¿ìËÙÅÅĞò
+ * @author chenjun
+ *
+ */
 public class QuickSort {
 	
-	public static int partition(int[] A, int p, int r) {
-		int x = A[r];
-		int i = p - 1;
-		int temp;
-		for (int j = p; j < r; j++) {
-			if (A[j] <= x){
-				i++;
-				temp = A[j];
-				A[j] = A[i];
-				A[i] = temp;
+	private static <T> void swap(T[] array, int i, int j){
+		T tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+	}
+	public static <T extends Comparable<T>> int partition(T[] array, int start, int end){		
+		int larger = start;
+		int p = start;
+		for(p = start; p <= end; p++){
+			if(array[p].compareTo(array[end]) < 0){
+				swap(array,p,larger);
+				larger++;
 			}
 		}
-		temp = A[i+1];
-		A[i+1] = A[r];
-		A[r] = temp;
-		return i+1;
+		swap(array, end ,larger);		
+		return larger;
 	}
 	
-	public static void quickSort(int[] A, int p, int r) {
-		if (p < r){
-		int q = partition(A, p, r);
-		quickSort(A, p, q - 1);
-		quickSort(A, q + 1, r);
+	public static <T extends Comparable<T>> void quikSort(T[] array, int start, int end) throws Exception{
+		if(array == null)
+			throw new Exception("Array is null!");
+		if(start < end){
+			int index = partition(array, start, end);
+			quikSort(array, start, index - 1);
+			quikSort(array, index + 1, end);
 		}
 	}
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		int[] A = new int[]{0,1,4,67,21,34,65,22};
-		quickSort(A, 0, A.length - 1);
+		Integer[] A ={0,1,4,67,21,34,65,22};
+		quikSort(A, 0, A.length - 1);
 		for (int i : A) {
 			System.out.print(i + "  ");
 		}		
