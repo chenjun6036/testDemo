@@ -21,16 +21,30 @@ public class BubbleSort {
 	}
 	
 	public static void main(String[] args) {
-		Integer[] array = {23,21,-12,54,67,-123,4};
+		int[] array = {23,21,-12,54,67,-123,4};
 		try {
 			sort(array);
 			for (int i = 0; i < array.length; i++) {
 				System.out.print(array[i] + "  ");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}		
+	}
+	
+	
+	//practice
+	public static void sort(int[] array){
+		if(array == null)
+			return;
+		for(int i = array.length - 1; i > 0; i--){
+			for(int j = 0; j < i; j++){
+				if(array[j] > array[j+1]){
+					int tmp = array[j+1];
+					array[j+1] = array[j];
+					array[j] = tmp;
+				}
+			}
 		}
-		
 	}
 }

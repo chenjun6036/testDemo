@@ -1,6 +1,5 @@
 package dp;
 
-import javax.swing.text.html.MinimalHTMLWriter;
 
 public class MaxSubArray {
 	public static int max(int i, int j){

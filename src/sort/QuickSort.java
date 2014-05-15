@@ -39,11 +39,38 @@ public class QuickSort {
 	 */
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		Integer[] A ={0,1,4,67,21,34,65,22};
-		quikSort(A, 0, A.length - 1);
+		int[] A ={0,1,4,67,21,34,65,22};
+		sort(A, 0, A.length - 1);
 		for (int i : A) {
 			System.out.print(i + "  ");
 		}		
+	}
+	
+	//practice
+	public static int p(int[] array, int start, int end){
+		int tag = array[end];
+		int p = start;
+		for(int i = start; i < end; i++){
+			if(array[i] < tag){
+				int tmp = array[i];
+				array[i] = array[p];
+				array[p] = tmp;
+				p++;
+			}
+		}
+		array[end] = array[p];
+		array[p] = tag;
+		return p;
+	}
+	
+	public static void sort(int[] array, int start, int end){
+		if(array == null)
+			return;
+		if(start < end){
+			int p = p(array,start,end);
+			sort(array,start,p-1);
+			sort(array,p+1,end);
+		}
 	}
 
 }

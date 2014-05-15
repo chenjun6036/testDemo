@@ -34,10 +34,40 @@ public class MergeSort<T extends Comparable<T>> {
 	}
 	
 	public static void main(String[] args) {
-		Integer[] array = {23,21,-12,54,67,-123,4};
-		sort(array, 0, array.length - 1);
+		int[] array = {23,21,-12,54,67,-123,4};
+		mergeSort(array, 0, array.length - 1);
 		for (Integer integer : array) {
 			System.out.print(integer + "   ");
+		}
+	}
+	
+	//practice
+	public static void merge(int[] array,int p, int q, int r){
+		int[] a = new int[q - p + 2];
+		int[] b = new int[r - q + 1];
+		for(int i = p,m = 0; i <=q; i++,m++){
+			a[m] = array[i];
+		}
+		a[q - p + 1] = Integer.MAX_VALUE;
+		for(int i = q + 1,m=0; i <= r; i++,m++){
+			b[m] = array[i];
+		}
+		b[r - q] = Integer.MAX_VALUE;
+		int i = 0, j = 0, k = p;
+		while(k <= r){
+			if(a[i] < b[j])
+				array[k++] = a[i++];
+			else
+				array[k++] = b[j++];
+		}
+	}
+	
+	public static void mergeSort(int[] array, int start, int end){
+		if(start < end){
+			int mid = (start + end) / 2;
+			mergeSort(array, start, mid);
+			mergeSort(array, mid + 1, end);
+			merge(array, start, mid, end);
 		}
 	}
 }

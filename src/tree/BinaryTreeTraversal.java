@@ -85,15 +85,15 @@ public class BinaryTreeTraversal {
 	 * @param root
 	 */
 	public static <T> void postOrderNoRecu(Node<T> root){
-		LinkedList<Node<T>> nodes = new LinkedList<>();
+		LinkedList<Node<T>> nodeStack = new LinkedList<>();
 		LinkedList<Node<T>> nodesReverse = new LinkedList<>();
-		while(!nodes.isEmpty() || root != null){
+		while(!nodeStack.isEmpty() || root != null){
 			if(root != null){
 				nodesReverse.addFirst(root);
-				nodes.addFirst(root);
+				nodeStack.addFirst(root);
 				root = root.right;
 			}else{
-				Node<T> tmp = nodes.removeFirst();
+				Node<T> tmp = nodeStack.removeFirst();
 				root = tmp.left;
 			}
 		}

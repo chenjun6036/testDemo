@@ -4,19 +4,25 @@ public class HasSubTree {
 	public static <T> boolean hasSubTree(Node<T> parent,Node<T> child){
 		if(parent == null || child == null)
 			return false;
-		if(isEqual(parent, child))
+		if(isSubTree(parent, child))
 			return true;
 		return hasSubTree(parent.left,child) || hasSubTree(parent.right, child);
 	}
 	
-	private static <T> boolean isEqual(Node<T> parent,Node<T> child){
-		if(child == null)
+	/**
+	 * 判断dst是否是以src根节点开始的子树
+	 * @param src
+	 * @param dst
+	 * @return
+	 */
+	private static <T> boolean isSubTree(Node<T> src,Node<T> dst){
+		if(dst == null)
 			return true;
-		if(parent == null)
+		if(src == null)
 			return false;
-		if(!parent.equals(child))
+		if(!src.equals(dst))
 			return false;		
-		return isEqual(parent.left,child.left) && isEqual(parent.right, child.right);
+		return isSubTree(src.left,dst.left) && isSubTree(src.right, dst.right);
 	}
 	
 	public static void main(String[] args) {
