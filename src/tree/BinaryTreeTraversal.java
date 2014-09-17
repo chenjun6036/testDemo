@@ -38,6 +38,30 @@ public class BinaryTreeTraversal {
 		}
 	}
 	
+	static Integer maxfind(Node<Integer> root){
+		if (root == null)
+			return null;
+		Integer max = root.t;
+		Integer min = root.t;
+		LinkedList<Node<Integer>> nodes = new LinkedList<>();
+		while(!nodes.isEmpty() || root != null){
+			if(root != null){
+				if(root.t > max)
+					max = root.t;
+				if(root.t < min)
+					min = root.t;
+				nodes.addFirst(root);
+				root = root.left;
+			}else{
+				Node<Integer> tmp = nodes.removeFirst();
+				root = tmp.right;
+			}
+		}
+		return max - min;
+	}
+	
+	
+	
 	/**
 	 * 中序遍历，递归实现。
 	 * @param root
@@ -105,8 +129,7 @@ public class BinaryTreeTraversal {
 	public static void main(String[] args) {
 		Integer[] array = {1,2,4,null,null,5,null,null,3,6,null,null,7};
 		Node<Integer> root = Tree.createTree(array);
-		postOrder(root);
+		System.out.println(maxfind(root));
 		System.out.println();
-		postOrderNoRecu(root);
 	}
 }

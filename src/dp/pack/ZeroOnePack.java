@@ -1,5 +1,13 @@
 package dp.pack;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
+/**
+ * 01背包
+ * @author chenjun
+ *
+ */
 public class ZeroOnePack {
 	public static final int PACKSIZE = 20;
 	public static final int COSTSIZE = 4;
@@ -39,7 +47,7 @@ public class ZeroOnePack {
 	
 	
 	/**
-	 * 使用一维数组，时间复杂度O(VN)，不考虑路径空间复杂度为O(V)，考虑路径空间复杂度为O(VN)
+	 * 使用一维数组，不需要填满背包，时间复杂度O(VN)，不考虑路径空间复杂度为O(V)，考虑路径空间复杂度为O(VN)
 	 */
 	public static void zeroOnePack1Dim() {
 		int f[] = new int[PACKSIZE + 1];
@@ -106,9 +114,33 @@ public class ZeroOnePack {
 			i--;
 		}
 	}
+	
+	/**
+	 * 输入两个整数n和m，从数列1,2,3,4，...，n中随意取几个数使其和等于m，要求列出所有的可能组合
+	 * @param n
+	 * @param m
+	 */
+	public static void findFactor(int m, int n, LinkedList<Integer> list){
+		if(m <= 0 || n <= 0) 
+			return;
+		if (m == n) {
+			Iterator<Integer> it = list.iterator();
+			while(it.hasNext()){
+				System.out.print(it.next());
+			}
+			System.out.print(n);
+			System.out.println();
+		}
+		list.push(n);
+		findFactor(m - n, n - 1, list);
+		list.pop();
+		findFactor(m, n - 1, list);
+	}
+	
 	public static void main(String[] args) {
-		zeroOnePack1Dim1();
+		/*zeroOnePack1Dim1();
 		System.out.println();
-		zeroOnePack1Dim();
+		zeroOnePack1Dim();*/
+		findFactor(10, 6, new LinkedList<Integer>());
 	}
 }

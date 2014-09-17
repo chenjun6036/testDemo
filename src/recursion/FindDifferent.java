@@ -2,6 +2,11 @@ package recursion;
 
 import java.util.LinkedList;
 
+/**
+ * 找出1,2...n中不同的m个数的所有组合
+ * @author chenjun
+ *
+ */
 public class FindDifferent {
 	void find(int n, int k, int start,LinkedList<Integer> stack) {
 		if (k > n)

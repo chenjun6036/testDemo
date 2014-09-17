@@ -55,4 +55,7 @@ public class Print1ToMaxOfDigits {
 			System.out.print(numbers[i++]);
 		System.out.print("  ");
 	}
+	public static void main(String[] args) {
+		print(3);
+	}
 }

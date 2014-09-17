@@ -6,6 +6,8 @@ public class Node<T> {
 	public int leftLen, rightLen;
 	Node(T t){
 		this.t = t;
+		this.left = null;
+		this.right = null;
 	}
 	
 	@SuppressWarnings("unchecked")

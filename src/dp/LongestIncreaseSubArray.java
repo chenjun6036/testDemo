@@ -1,5 +1,10 @@
 package dp;
 
+/**
+ * LIS，最长递增子序列，编程之美2.16
+ * @author chenjun
+ *
+ */
 public class LongestIncreaseSubArray {
 	public static int max(int[] a){
 		int max = a[0];
@@ -48,8 +53,40 @@ public class LongestIncreaseSubArray {
 		return nmaxLIS;
 	}
 	
+	/**
+	 * 待练习
+	 * @param array
+	 * @return
+	 */
+	public static int LISPractice(int[] array) {
+		int n = array.length;
+		int[] LIS = new int[n];
+		int[] maxV = new int[n + 1];
+		int max = 1;
+		
+		for (int i = 1; i < n; i++) {
+			LIS[i] = 1;
+			int j = max;
+			while(j > 0) {
+				if(array[i] > maxV[j]) {
+					LIS[i] = j + 1;
+					break;
+				}
+				j--;
+			}
+			
+			if(max < LIS[i]) {
+				max = LIS[i];
+				maxV[max] = array[i];
+			} else if(array[i] > maxV[j] && array[i] < maxV[LIS[i]]) {
+				maxV[LIS[i]] = array[i];
+			}
+		}
+		return max;
+	}
+	
 	public static void main(String[] args) {
-		int[] a = {1,-1,2,-3,4,-5,6,-7};
-		System.out.println(LIS(a));
+		int[] a = {1,-1,2,-3,4,-5,6,-7,10};
+		System.out.println(LISPractice(a));
 	}
 }

@@ -1,5 +1,9 @@
 package dp.pack;
-
+/**
+ * ÍêÈ«±³°ü
+ * @author chenjun
+ *
+ */
 public class CompletePack {
 	public static final int PACKSIZE = 20;
 	public static final int COSTSIZE = 4;

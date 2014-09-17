@@ -7,7 +7,6 @@ package tree;
  */
 public class Tree<T> {
 	public static int i=0 ; 
-	public static int maxlen = 0;
 	
 	/**
 	 * 创建二叉树
@@ -49,41 +48,7 @@ public class Tree<T> {
 		printTreeInOrder(root.right);
 	}
 	
-	/**
-	 * 计算树中的最长距离
-	 * @param root
-	 */
-	public static <T> void maxLen(Node<T> root){
-		if(root == null)
-			return;
-		if(root.left == null){
-			root.leftLen = 0;
-		}
-		if(root.right == null){
-			root.rightLen = 0;
-		}
-		if(root.left != null)
-			maxLen(root.left);
-		if(root.right != null)
-			maxLen(root.right);
-		
-		if(root.left != null){
-			if(root.left.leftLen > root.left.rightLen)
-				root.leftLen = root.left.leftLen + 1;
-			else
-				root.leftLen = root.left.rightLen + 1;
-		}
-		
-		if(root.right != null){
-			if(root.right.leftLen > root.right.rightLen)
-				root.rightLen = root.right.leftLen + 1;
-			else
-				root.rightLen = root.right.rightLen + 1;
-		}
-		if(root.leftLen + root.rightLen > maxlen)
-			maxlen = root.leftLen + root.rightLen;
-		
-	}
+	
 	
 	/**
 	 * 将二叉搜索树变为双向链表
