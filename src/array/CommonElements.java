@@ -22,7 +22,8 @@ public class CommonElements {
 	}
 	
 	public static void main(String[] args) {
-		int[] a = {0,1,2,3,4};
+
+		int[] a = {0,0,2,3,4};
 		int[] b = {1,3,5,7,9};
 		printCommonElements(a, b);
 	}
