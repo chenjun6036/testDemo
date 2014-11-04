@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LCS {
 
-	public static List<Character> resultList = new ArrayList<Character>();
+	public static List<Character> resultList = new ArrayList<>();
 	/**
 	 * 最长公共子序列，计算最优值 
 	 * @param x
